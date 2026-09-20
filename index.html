@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Liberi di Scegliere — Le Trappole del Quotidiano e il Segreto del Buon Vivere</title>
+<meta name="description" content="Un percorso in 4 incontri per difendere la salute, riconoscere le dipendenze e vivere il presente in sicurezza.">
+<link rel="icon" href="img/logo-lute.png">
+<style>
+:root{
+  --verde:#1f6f5c;
+  --verde-scuro:#144a3d;
+  --verde-chiaro:#e6f2ee;
+  --oro:#b8863b;
+  --oro-chiaro:#fbf3e4;
+  --crema:#fbf9f4;
+  --carta:#ffffff;
+  --testo:#22302c;
+  --testo-tenue:#5a6b66;
+  --bordo:#dfe6e3;
+  --ombra:0 6px 24px rgba(20,74,61,.10);
+  --raggio:18px;
+  --base:19px;
+}
+html[data-contrasto="alto"]{
+  --verde:#004d3d; --verde-scuro:#00301f; --verde-chiaro:#ffffff;
+  --oro:#8a5c00; --oro-chiaro:#ffffff;
+  --crema:#ffffff; --carta:#ffffff;
+  --testo:#000000; --testo-tenue:#1a1a1a; --bordo:#000000;
+  --ombra:none;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth; scroll-padding-top:110px}
+body{
+  margin:0; background:var(--crema); color:var(--testo);
+  font-family:"Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+  font-size:var(--base); line-height:1.65;
+}
+img{max-width:100%; display:block}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif; line-height:1.25; margin:0 0 .4em}
+h2{font-size:2.05em; color:var(--verde-scuro)}
+h3{font-size:1.35em; color:var(--verde-scuro)}
+p{margin:0 0 1em}
+.wrap{max-width:1120px; margin:0 auto; padding:0 22px}
+.sezione{padding:68px 0}
+.sezione.alt{background:var(--carta); border-top:1px solid var(--bordo); border-bottom:1px solid var(--bordo)}
+.occhiello{
+  display:inline-block; font-size:.78em; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--oro); font-weight:700; margin-bottom:10px;
+}
+.sottotitolo{font-size:1.1em; color:var(--testo-tenue); max-width:64ch}
+
+/* ---------- barra superiore ---------- */
+header.barra{
+  position:sticky; top:0; z-index:50; background:rgba(255,255,255,.97);
+  backdrop-filter:blur(6px); border-bottom:1px solid var(--bordo);
+}
+.barra .wrap{display:flex; align-items:center; gap:18px; min-height:74px; flex-wrap:wrap}
+.marchio{display:flex; align-items:center; gap:14px; font-weight:700; color:var(--verde-scuro); font-size:1.02em}
+.marchio img{height:42px; width:auto}
+nav.menu{display:flex; gap:4px; margin-left:auto; flex-wrap:wrap}
+nav.menu a{
+  padding:9px 14px; border-radius:999px; text-decoration:none; color:var(--verde-scuro);
+  font-weight:600; font-size:.92em;
+}
+nav.menu a:hover,nav.menu a:focus-visible{background:var(--verde-chiaro)}
+nav.menu a.attivo{background:var(--verde); color:#fff}
+.strumenti{display:flex; gap:6px; align-items:center}
+.strumenti button{
+  border:1px solid var(--bordo); background:var(--carta); color:var(--verde-scuro);
+  border-radius:10px; padding:7px 11px; font-size:.95em; font-weight:700; cursor:pointer;
+}
+.strumenti button:hover{background:var(--verde-chiaro)}
+
+/* ---------- copertina: foto sopra, testo sotto ---------- */
+.copertina{background:var(--verde-scuro); color:#fff}
+/* l'insegna si vede tutta intera, senza tagli: nessun ritaglio, solo rimpicciolita */
+.copertina .foto-grande{padding:34px 22px 6px}
+.copertina .foto-grande img{
+  width:100%; max-width:820px; height:auto; margin:0 auto; border-radius:14px;
+  box-shadow:0 10px 34px rgba(0,0,0,.28);
+}
+@media(max-width:700px){.copertina .foto-grande{padding:20px 16px 4px}}
+.copertina .wrap{padding-top:40px; padding-bottom:56px; text-align:center}
+.copertina .logo-grande{height:78px; width:auto; margin:0 auto 22px; filter:brightness(0) invert(1); opacity:.95}
+.copertina h1{font-size:2.5em; color:#fff; max-width:22ch; margin-left:auto; margin-right:auto}
+.copertina .claim{
+  font-size:1.2em; font-style:italic; color:#efe6d6; max-width:56ch; margin:18px auto 0;
+}
+.pulsanti{display:flex; gap:14px; flex-wrap:wrap; justify-content:center; margin-top:30px}
+.btn{
+  display:inline-block; padding:15px 26px; border-radius:999px; text-decoration:none;
+  font-weight:700; font-size:1.02em; border:2px solid transparent; cursor:pointer; font-family:inherit;
+}
+.btn.primario{background:var(--oro); color:#25190a}
+.btn.primario:hover{background:#cf9944}
+
+/* ---------- griglie e schede ---------- */
+.griglia{display:grid; gap:24px}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+@media(max-width:900px){.g2,.g3{grid-template-columns:1fr}}
+.scheda{
+  background:var(--carta); border:1px solid var(--bordo); border-radius:var(--raggio);
+  padding:28px; box-shadow:var(--ombra);
+}
+.scheda .icona{font-size:2em; line-height:1; margin-bottom:10px}
+
+/* scheda con foto sopra e testo sotto */
+.scheda-foto{
+  background:var(--carta); border:1px solid var(--bordo); border-radius:var(--raggio);
+  overflow:hidden; box-shadow:var(--ombra); display:flex; flex-direction:column;
+}
+.scheda-foto .immagine{height:260px; overflow:hidden}
+.scheda-foto .immagine img{width:100%; height:100%; object-fit:cover}
+.scheda-foto .testo{padding:26px 28px 30px}
+
+/* ---------- moduli ---------- */
+.linguette{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:26px}
+.linguette button{
+  font-family:inherit; font-size:.98em; font-weight:700; cursor:pointer;
+  border:2px solid var(--bordo); background:var(--carta); color:var(--verde-scuro);
+  border-radius:14px; padding:12px 18px; text-align:left;
+}
+.linguette button:hover{border-color:var(--verde)}
+.linguette button[aria-selected="true"]{background:var(--verde); color:#fff; border-color:var(--verde)}
+.linguette .num{display:block; font-size:.74em; letter-spacing:.1em; text-transform:uppercase; opacity:.85}
+.pannello[hidden]{display:none}
+.pannello{
+  background:var(--carta); border:1px solid var(--bordo); border-radius:var(--raggio);
+  overflow:hidden; box-shadow:var(--ombra);
+}
+.pannello .interno{display:block}          /* foto sopra, testo sotto */
+.pannello .immagine{height:380px; overflow:hidden}
+.pannello .immagine img{width:100%; height:100%; object-fit:cover}
+.pannello .testo{padding:34px 38px 38px}
+@media(max-width:700px){.pannello .immagine{height:230px} .pannello .testo{padding:26px 22px 30px}}
+ul.elenco{list-style:none; padding:0; margin:0}
+ul.elenco li{position:relative; padding-left:34px; margin-bottom:12px}
+ul.elenco li::before{
+  content:"•"; position:absolute; left:0; top:0; color:var(--verde); font-weight:900;
+  background:var(--verde-chiaro); width:24px; height:24px; border-radius:50%;
+  display:grid; place-items:center; font-size:1em;
+}
+.etichetta{
+  display:inline-block; background:var(--oro-chiaro); color:#7a5a1c; border:1px solid #e8d5ae;
+  border-radius:999px; padding:5px 14px; font-size:.82em; font-weight:700; margin-bottom:14px;
+}
+
+footer{background:var(--verde-scuro); color:#dfeae6; padding:48px 0 40px; text-align:center}
+footer img{height:64px; width:auto; margin:0 auto 18px; filter:brightness(0) invert(1); opacity:.9}
+footer .fine{border-top:1px solid rgba(255,255,255,.2); margin-top:26px; padding-top:20px; font-size:.9em; opacity:.85}
+
+.sali{
+  position:fixed; right:22px; bottom:22px; z-index:60; width:54px; height:54px; border-radius:50%;
+  border:none; background:var(--verde); color:#fff; font-size:1.4em; cursor:pointer; box-shadow:var(--ombra);
+  display:none;
+}
+.sali.visibile{display:block}
+
+@media print{
+  header.barra,.sali,.strumenti,.pulsanti{display:none !important}
+  .pannello[hidden]{display:block !important}
+  body{font-size:12pt; background:#fff}
+  .sezione{padding:18px 0; break-inside:avoid}
+}
+</style>
+</head>
+<body>
+
+<header class="barra">
+  <div class="wrap">
+    <div class="marchio"><img src="img/logo-lute.png" alt="Logo LUTE"> Liberi di Scegliere</div>
+    <nav class="menu" aria-label="Sezioni della pagina">
+      <a href="#progetto">Il progetto</a>
+      <a href="#principali">Obiettivi principali</a>
+      <a href="#obiettivi">Obiettivi del Progetto</a>
+      <a href="#moduli">Moduli</a>
+    </nav>
+    <div class="strumenti">
+      <button type="button" id="testoMeno" title="Riduci il testo" aria-label="Riduci la dimensione del testo">A−</button>
+      <button type="button" id="testoPiu" title="Ingrandisci il testo" aria-label="Ingrandisci la dimensione del testo">A+</button>
+      <button type="button" id="contrasto" title="Alto contrasto" aria-label="Attiva o disattiva l'alto contrasto">◐</button>
+      <button type="button" id="stampa" title="Stampa" aria-label="Stampa la pagina">🖨</button>
+    </div>
+  </div>
+</header>
+
+<!-- ============ COPERTINA: foto sopra, testo sotto ============ -->
+<section class="copertina">
+  <div class="foto-grande">
+    <img src="img/insegna.jpg" alt="Insegna del progetto Liberi di Scegliere">
+  </div>
+  <div class="wrap">
+    <img class="logo-grande" src="img/logo-lute.png" alt="Logo LUTE">
+    <h1>"Liberi di Scegliere: Le Trappole del Quotidiano e il Segreto del Buon Vivere"</h1>
+    <p class="claim">“Un percorso in 4 incontri per difendere la salute, riconoscere le dipendenze e vivere il presente in sicurezza”.</p>
+    <div class="pulsanti">
+      <a class="btn primario" href="#progetto">Leggi il progetto</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ IL PROGETTO ============ -->
+<section class="sezione" id="progetto">
+  <div class="wrap">
+    <span class="occhiello">Il progetto</span>
+    <h2>Un progetto sulle dipendenze nella terza età</h2>
+    <p class="sottotitolo">Un progetto sulle dipendenze nella terza età che affronta i problemi emergenti
+    come l'abuso di alcol, l'uso improprio di farmaci e il gioco d'azzardo patologico tra gli anziani.</p>
+  </div>
+</section>
+
+<!-- ============ OBIETTIVI PRINCIPALI ============ -->
+<section class="sezione alt" id="principali">
+  <div class="wrap">
+    <span class="occhiello">Obiettivi principali</span>
+    <h2>Obiettivi principali</h2>
+    <div class="griglia g2" style="margin-top:30px">
+      <div class="scheda-foto">
+        <div class="immagine"><img src="img/gruppo.jpg" alt="Un gruppo di persone anziane e due operatori seduti in cerchio discutono del progetto"></div>
+        <div class="testo">
+          <h3>Sensibilizzazione</h3>
+          <p style="margin:0">Informare gli anziani, le famiglie e i caregiver sui rischi legati a
+          sostanze legali e nuove dipendenze.</p>
+        </div>
+      </div>
+      <div class="scheda-foto">
+        <div class="immagine"><img src="img/pranzo.jpg" alt="Anziani e volontari ridono insieme durante un pranzo comunitario"></div>
+        <div class="testo">
+          <h3>Contrasto alla solitudine</h3>
+          <p style="margin:0">Ridurre l'isolamento sociale, spesso fattore scatenante del consumo
+          problematico in età avanzata.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ OBIETTIVI DEL PROGETTO ============ -->
+<section class="sezione" id="obiettivi">
+  <div class="wrap">
+    <span class="occhiello">Obiettivi del Progetto</span>
+    <h2>Obiettivi del Progetto</h2>
+    <div class="griglia g3" style="margin-top:30px">
+      <div class="scheda">
+        <div class="icona" aria-hidden="true">🌳</div>
+        <h3>Promuovere l'invecchiamento attivo</h3>
+        <p style="margin:0">Utilizzare la formazione come scudo contro la depressione e l'isolamento.</p>
+      </div>
+      <div class="scheda">
+        <div class="icona" aria-hidden="true">📖</div>
+        <h3>Sviluppare la "Health Literacy" (Alfabetizzazione sanitaria)</h3>
+        <p style="margin:0">Rendere le persone consapevoli dei rischi legati all'automedicazione e
+        alle interazioni farmaco-alcol.</p>
+      </div>
+      <div class="scheda">
+        <div class="icona" aria-hidden="true">🛡️</div>
+        <h3>Prevenire le dipendenze comportamentali</h3>
+        <p style="margin:0">Riconoscere i primi segnali del gioco d'azzardo o dell'uso compulsivo
+        degli smartphone.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MODULI ============ -->
+<section class="sezione alt" id="moduli">
+  <div class="wrap">
+    <span class="occhiello">Articolazione delle Attività (Moduli)</span>
+    <h2>Articolazione delle Attività</h2>
+    <p class="sottotitolo" style="margin-bottom:28px">Tocca il titolo di un modulo per leggerne il contenuto.</p>
+
+    <div class="linguette" role="tablist" aria-label="I moduli del percorso">
+      <button role="tab" id="t1" aria-controls="p1" aria-selected="true"><span class="num">Modulo 1 · Sostanze</span>"Uso, non abuso dei farmaci"</button>
+      <button role="tab" id="t2" aria-controls="p2" aria-selected="false"><span class="num">Modulo 2 · Comportamenti</span>"Il gioco non è un azzardo"</button>
+      <button role="tab" id="t3" aria-controls="p3" aria-selected="false"><span class="num">Modulo 3 · Tecnologia</span>"Connessi ma Sicuri"</button>
+    </div>
+
+    <div class="pannello" role="tabpanel" id="p1" aria-labelledby="t1">
+      <div class="interno">
+        <div class="immagine"><img src="img/farmaci.jpg" alt="Una signora anziana e un farmacista esaminano insieme un portapillole settimanale"></div>
+        <div class="testo">
+          <span class="etichetta">Sostanze</span>
+          <h3>Modulo 1: "Uso, non abuso dei farmaci"</h3>
+          <ul class="elenco">
+            <li>Incontro sulla gestione dei farmaci (ansiolitici, sonniferi) ed i rischi della loro combinazione con l'alcol.</li>
+            <li>Sfizio vs Dipendenza: capire quando il bicchiere di alcol quotidiano diventa un problema.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="pannello" role="tabpanel" id="p2" aria-labelledby="t2" hidden>
+      <div class="interno">
+        <div class="immagine"><img src="img/giochi.jpg" alt="Persone anziane dipingono ad acquerello e giocano a dama e puzzle intorno a un tavolo"></div>
+        <div class="testo">
+          <span class="etichetta">Comportamenti</span>
+          <h3>Modulo 2: "Il gioco non è un azzardo"</h3>
+          <ul class="elenco">
+            <li>Parliamo di ludopatia/azzardopatia (Gratta e Vinci, slot, giochi online, bingo).</li>
+            <li>Promozione di alternative sane.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="pannello" role="tabpanel" id="p3" aria-labelledby="t3" hidden>
+      <div class="interno">
+        <div class="immagine"><img src="img/tecnologia.jpg" alt="Un giovane operatore aiuta una signora anziana a fare una videochiamata con le nipoti"></div>
+        <div class="testo">
+          <span class="etichetta">Tecnologia</span>
+          <h3>Modulo 3: "Connessi ma Sicuri"</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <img src="img/logo-lute.png" alt="Logo LUTE">
+    <p style="max-width:60ch; margin:0 auto; color:#dfeae6">"Liberi di Scegliere: Le Trappole del Quotidiano
+    e il Segreto del Buon Vivere"</p>
+    <div class="fine">“Un percorso in 4 incontri per difendere la salute, riconoscere le dipendenze
+    e vivere il presente in sicurezza”.</div>
+  </div>
+</footer>
+
+<button class="sali" id="sali" title="Torna all'inizio" aria-label="Torna all'inizio">↑</button>
+
+<script>
+/* le preferenze si salvano nel browser; se non è possibile, l'app funziona lo stesso */
+function leggiPref(chiave){ try { return localStorage.getItem(chiave); } catch(e){ return null; } }
+function scriviPref(chiave, valore){ try { localStorage.setItem(chiave, valore); } catch(e){} }
+function togliPref(chiave){ try { localStorage.removeItem(chiave); } catch(e){} }
+
+(function(){
+  var radice = document.documentElement;
+  var base = parseInt(leggiPref('lds_testo') || '19', 10);
+  if (isNaN(base)) base = 19;
+  function applicaTesto(){ radice.style.setProperty('--base', base + 'px'); scriviPref('lds_testo', base); }
+  applicaTesto();
+  document.getElementById('testoPiu').onclick  = function(){ base = Math.min(base + 2, 27); applicaTesto(); };
+  document.getElementById('testoMeno').onclick = function(){ base = Math.max(base - 2, 15); applicaTesto(); };
+
+  if (leggiPref('lds_contrasto') === 'alto') radice.setAttribute('data-contrasto','alto');
+  document.getElementById('contrasto').onclick = function(){
+    var attivo = radice.getAttribute('data-contrasto') === 'alto';
+    if (attivo) { radice.removeAttribute('data-contrasto'); togliPref('lds_contrasto'); }
+    else { radice.setAttribute('data-contrasto','alto'); scriviPref('lds_contrasto','alto'); }
+  };
+  document.getElementById('stampa').onclick = function(){ window.print(); };
+})();
+
+/* ---------- menu: voce attiva ---------- */
+(function(){
+  var voci = Array.prototype.slice.call(document.querySelectorAll('nav.menu a'));
+  var sezioni = voci.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  var osservatore = new IntersectionObserver(function(entrate){
+    entrate.forEach(function(e){
+      if (!e.isIntersecting) return;
+      voci.forEach(function(a,i){ a.classList.toggle('attivo', sezioni[i] === e.target); });
+    });
+  }, { rootMargin:'-45% 0px -50% 0px' });
+  sezioni.forEach(function(s){ if (s) osservatore.observe(s); });
+
+  var sali = document.getElementById('sali');
+  window.addEventListener('scroll', function(){ sali.classList.toggle('visibile', window.scrollY > 700); });
+  sali.onclick = function(){ window.scrollTo({ top:0, behavior:'smooth' }); };
+})();
+
+/* ---------- linguette dei moduli ---------- */
+(function(){
+  var linguette = Array.prototype.slice.call(document.querySelectorAll('[role="tab"]'));
+  function apri(t){
+    linguette.forEach(function(l){
+      var scelta = (l === t);
+      l.setAttribute('aria-selected', scelta ? 'true' : 'false');
+      document.getElementById(l.getAttribute('aria-controls')).hidden = !scelta;
+    });
+  }
+  linguette.forEach(function(l, i){
+    l.onclick = function(){ apri(l); };
+    l.onkeydown = function(e){
+      var d = (e.key === 'ArrowRight') ? 1 : (e.key === 'ArrowLeft') ? -1 : 0;
+      if (!d) return;
+      e.preventDefault();
+      var p = linguette[(i + d + linguette.length) % linguette.length];
+      p.focus(); apri(p);
+    };
+  });
+})();
+</script>
+</body>
+</html>
